@@ -4,25 +4,33 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const { createFilePath } = require('gatsby-source-filesystem');
-const path = require('path');
+const { createFilePath } = require("gatsby-source-filesystem");
+const path = require("path");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   // you only want to operate on `Mdx` nodes. If you had content from a
   // remote CMS you could also check to see if the parent node was a
   // `File` node here
-  if (node.internal.type === 'Mdx') {
-    const value = createFilePath({ node, getNode });
+  if (node.internal.type === "Mdx") {
+    const filePath = createFilePath({ node, getNode });
+
+    const prefix = `posts/`;
+    const value = `${prefix}${filePath}`;
+
+    console.log("-----------");
+    console.log(value);
+    console.log("-----------");
+
     createNodeField({
       // Name of the field you are adding
-      name: 'slug',
+      name: "slug",
       // Individual MDX node
       node,
       // Generated value based on filepath with "blog" prefix. you
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value: `/posts${value}`,
+      value,
     });
   }
 };
@@ -56,7 +64,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // (or `node.frontmatter.slug`)
       path: node.fields.slug,
       // This component will wrap our MDX content
-      component: path.resolve('./src/components/page-layout.tsx'),
+      component: path.resolve("./src/components/page-layout.tsx"),
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
@@ -66,6 +74,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    devtool: 'eval-source-map',
+    devtool: "eval-source-map",
   });
 };
