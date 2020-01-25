@@ -15,12 +15,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === "Mdx") {
     const filePath = createFilePath({ node, getNode });
 
-    const prefix = `posts/`;
+    const prefix = `posts`;
     const value = `${prefix}${filePath}`;
-
-    console.log("-----------");
-    console.log(value);
-    console.log("-----------");
 
     createNodeField({
       // Name of the field you are adding

@@ -27,6 +27,10 @@ const Introduction = () => {
     }
   `);
 
+  console.log('---------')
+  console.log(data)
+  console.log('---------')
+
 
   const {background} = data.site.siteMetadata;
   const {title, author} = data.mdx.frontmatter
