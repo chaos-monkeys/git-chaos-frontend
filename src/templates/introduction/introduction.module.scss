@@ -14,8 +14,8 @@
     border: none;
 
     // FIXME: make into iOS mixin?
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+    padding-left: - env(safe-area-inset-left);
+    padding-right: - env(safe-area-inset-right);
 
     &:hover,
     &:focus,
@@ -27,7 +27,7 @@
 }
 
 .tile {
-    grid-row: 1  / 4;
+    grid-row: 1 / 4;
     grid-column: 1;
     height: 100%;
     min-height: 100%;
