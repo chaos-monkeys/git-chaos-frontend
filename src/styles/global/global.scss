@@ -84,16 +84,21 @@
 
 }
 
-html,
-body {
-    width: 100vw;
+html {
+    overflow: hidden;
     height: calc(var(--vh, 1vh) * 100);
-    overflow-x: hidden;
     --main-bg: #1a1b20;
     --light-text: #ffffff;
     --primary: #ff0065;
     --highlight: #ffed00;
     --text-bg: #fff;
+}
+
+body {
+    overflow-x: hidden;
+    height: calc(var(--vh, 1vh) * 100);
+    margin: 0px;
+    padding: 0px;
 }
 
 button,
