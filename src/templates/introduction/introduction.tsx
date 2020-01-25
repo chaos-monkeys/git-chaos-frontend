@@ -14,11 +14,8 @@ const Introduction = () => {
           background
         }
       }
-      mdx(id: {eq: "77d47aed-4767-5996-9571-6e216a664745"}) {
+      mdx(frontmatter: {title: {eq: "Attempting to predict chaos"}}) {
         id
-        fields {
-          slug
-        }
         frontmatter {
           title
           author
