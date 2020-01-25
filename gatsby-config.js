@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const path = require('path')
+const path = require("path");
 
 module.exports = {
   siteMetadata: {
@@ -57,6 +57,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mdx",
       options: {
+        extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,

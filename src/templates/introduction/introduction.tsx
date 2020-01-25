@@ -20,6 +20,9 @@ const Introduction = () => {
           title
           author
         }
+        fields {
+          slug
+        }
       }
     }
   `);

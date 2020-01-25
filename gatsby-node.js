@@ -12,10 +12,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // you only want to operate on `Mdx` nodes. If you had content from a
   // remote CMS you could also check to see if the parent node was a
   // `File` node here
-  // if (node.internal.type === "Mdx") {
+  if (node.internal.type === "Mdx") {
     const basePath = `posts`;
 
     const filePath = createFilePath({ node, getNode,  basePath  });
+    const value = `${basePath}${filePath}`
 
     createNodeField({
       // Name of the field you are adding
@@ -25,9 +26,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Generated value based on filepath with "blog" prefix. you
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value: filePath
+      value
     });
-  // }
+  }
 };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
