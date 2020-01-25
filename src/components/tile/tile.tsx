@@ -9,7 +9,6 @@ const Tile = ({ className}:
   }) => (
     <>
       <div className={classBuilder(styles.grid, className)}>
-        <div className={styles.grunge} />
         <div className={styles.tile} />
         <div className={styles.vignette} />
       </div>

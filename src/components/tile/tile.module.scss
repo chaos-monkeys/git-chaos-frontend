@@ -22,16 +22,6 @@
     height: 100%;
 }
 
-.grunge {
-    @extend %position;
-    background-image: url('../../images/felt.jpg');
-    background-repeat: repeat;
-    z-index: 1;
-    background-size: 50rem;
-    opacity: 1;
-}
-
-
 .tile {
     @extend %position;
     z-index: 2;
