@@ -13,10 +13,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // remote CMS you could also check to see if the parent node was a
   // `File` node here
   if (node.internal.type === "Mdx") {
-    const filePath = createFilePath({ node, getNode });
+    const basePath = `posts`;
 
-    const prefix = `posts`;
-    const value = `${prefix}${filePath}`;
+    const filePath = createFilePath({ node, getNode,  basePath  });
 
     createNodeField({
       // Name of the field you are adding
@@ -26,7 +25,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Generated value based on filepath with "blog" prefix. you
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value,
+      value: filePath
     });
   }
 };
