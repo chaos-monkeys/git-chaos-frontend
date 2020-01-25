@@ -47,7 +47,7 @@
 
 .left {
     grid-template-columns: 4fr min-content min-content 1fr;
-    grid-template-rows: minmax(10rem, 25vh) min-content;
+    grid-template-rows: minmax(10rem, calc(var(--vh, 1vh) * 25)) min-content;
     grid-template-areas:
         "image          title   name    ."
         "description    title   name    .";
@@ -55,7 +55,7 @@
 
 .right {
     grid-template-columns: 1fr min-content min-content 4fr;
-    grid-template-rows: minmax(10rem, 25vh) min-content;
+    grid-template-rows: minmax(10rem, calc(var(--vh, 1vh) * 25)) min-content;
     grid-template-areas:
         ".  name    title   image"
         ".  name    title   description";

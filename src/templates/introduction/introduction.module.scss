@@ -7,8 +7,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr min-content min-content;
-    height: 99vh;
-    max-height: 99vh;
+    height: calc(var(--vh, 1vh) * 99);
+    max-height: calc(var(--vh, 1vh) * 99);
     color: var(--primary);
     text-decoration: none;
     border: none;
