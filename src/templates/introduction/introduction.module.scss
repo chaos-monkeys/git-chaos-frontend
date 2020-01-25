@@ -13,6 +13,10 @@
     text-decoration: none;
     border: none;
 
+    // FIXME: make into iOS mixin?
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+
     &:hover,
     &:focus,
     &:active {
