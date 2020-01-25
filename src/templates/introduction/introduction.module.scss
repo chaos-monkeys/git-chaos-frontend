@@ -1,0 +1,53 @@
+// FIXME: make this into a separate copmponnet?
+@import './../../styles/global/tokens/tokens.scss';
+@import './../../styles/global/typography.scss';
+@import './../../styles/global/mixins.scss';
+
+.tileLink {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr min-content min-content;
+    height: 99vh;
+    max-height: 99vh;
+    color: var(--primary);
+    text-decoration: none;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        // FIXME: accessibility NONO, but as it's a fullscreen, maybe okay?
+        outline: none;
+        border: none;
+    }
+}
+
+.tile {
+    grid-row: 1  / 4;
+    grid-column: 1;
+    height: 100%;
+    min-height: 100%;
+}
+
+.title {
+    @include font('l');
+    @include sans-serif;
+    @include font-weight('x-bold');
+    @include margin-horizontal('m');
+    grid-row: 2;
+    grid-column: 1;
+    text-transform: uppercase;
+    line-height: 3rem;
+    z-index: 1000;
+
+}
+
+.author {
+    @include mono();
+    @include font('s');
+    @include margin-horizontal('m');
+    @include margin-bottom('m');
+    grid-row: 3;
+    grid-column: 1;
+    z-index: 1000;
+}

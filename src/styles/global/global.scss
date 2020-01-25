@@ -1,0 +1,113 @@
+@import './mixins.scss';
+
+// FIXME: refine typography!
+// ensure full support
+// reduce filesize
+
+// https://google-webfonts-helper.herokuapp.com/!
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-style: normal;
+    // font-display: swap;
+    src: url('../../fonts/montserrat-v14-latin-regular.eot');
+    src: local('Montserrat Regular'), local('Montserrat-Regular'),
+        url('../../fonts/montserrat-v14-latin-regular.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/montserrat-v14-latin-regular.woff2') format('woff2'),
+        url('../../fonts/montserrat-v14-latin-regular.woff') format('woff'),
+        url('../../fonts/montserrat-v14-latin-regular.ttf') format('truetype'),
+        url('../../fonts/montserrat-v14-latin-regular.svg#Montserrat') format('svg');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 900;
+    font-style: normal;
+    // font-display: swap;
+    src: url('../../fonts/montserrat-v14-latin-900.eot');
+    src: local('Montserrat Black'), local('Montserrat-Black'),
+        url('../../fonts/montserrat-v14-latin-900.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/montserrat-v14-latin-900.woff2') format('woff2'),
+        url('../../fonts/montserrat-v14-latin-900.woff') format('woff'),
+        url('../../fonts/montserrat-v14-latin-900.ttf') format('truetype'),
+        url('../../fonts/montserrat-v14-latin-900.svg#Montserrat') format('svg');
+}
+
+@font-face {
+    font-family: 'Esteban';
+    font-weight: 400;
+    font-style: normal;
+    // font-display: swap;
+    src: url('../../fonts/esteban-v8-latin-regular.eot');
+    src: local('Esteban'),
+        url('../../fonts/esteban-v8-latin-regular.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/esteban-v8-latin-regular.woff2') format('woff2'),
+        url('../../fonts/esteban-v8-latin-regular.woff') format('woff'),
+        url('../../fonts/esteban-v8-latin-regular.ttf') format('truetype'),
+        url('../../fonts/esteban-v8-latin-regular.svg#Esteban') format('svg');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    // font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+    src: url('../../fonts/jetbrainsmono-regular-webfont.woff2') format('woff2'),
+        url('../../fonts/jetbrainsmono-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    // font-display: swap;
+    font-weight: 500;
+    font-style: normal;
+    src: url('../../fonts/jetbrainsmono-medium-webfont.woff2') format('woff2'),
+        url('../../fonts/jetbrainsmono-medium-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    // font-display: swap;
+    font-weight: 700;
+    font-style: bold;
+    src: url('../../fonts/jetbrainsmono-bold-webfont.woff2') format('woff2'),
+        url('../../fonts/jetbrainsmono-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    // font-display: swap;
+    font-weight: 800;
+    font-style: bolder;
+    src: url('../../fonts/jetbrainsmono-extrabold-webfont.woff2') format('woff2'),
+        url('../../fonts/jetbrainsmono-extrabold-webfont.woff') format('woff');
+
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    --main-bg: #1a1b20;
+    --light-text: #ffffff;
+    --primary: #ff0065;
+    --highlight: #ffed00;
+    --text-bg: #fff;
+}
+
+button,
+a {
+    @include border-hack(1px);
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        border: 1px solid var(--highlight);
+    }
+}

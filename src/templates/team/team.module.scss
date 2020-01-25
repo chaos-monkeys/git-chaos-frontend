@@ -1,0 +1,13 @@
+@import './../../styles/global/tokens/tokens.scss';
+@import './../../styles/global/typography.scss';
+
+.grid {
+    @include padding('m');
+    display: grid;
+}
+
+.pull {
+    @include mono();
+    @include font('s');
+    @include padding-vertical('s');
+}
