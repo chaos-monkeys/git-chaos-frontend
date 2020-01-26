@@ -35,7 +35,7 @@ const Introduction = () => {
 
   return (
     // TOOD: add text ally stuff and arias
-    <Link to={slug} className={styles.tileLink}>
+    <Link to={`/${slug}`} className={styles.tileLink}>
       <Tile className={styles.tile} text={backgroundText} />
       <h1 className={styles.title}>{title}</h1>
       <h3 className={styles.author}>{`By ${author}`}</h3>
