@@ -5,7 +5,7 @@
   width: 4rem;
   position: relative;
   background: var(--primary);
-  border: $borderSize solid var(--highlight);
+  border: 1px solid var(--highlight);
 
   // removes dotted line on firefox button focus - only acceptable due to background pop on focus
   &::-moz-focus-inner {
