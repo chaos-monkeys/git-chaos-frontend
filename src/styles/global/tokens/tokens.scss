@@ -1,29 +1,29 @@
 // https://rangle.io/blog/mixin-design-tokens/
 
 $spaceMap: (
-    xxxs: 0.4rem,
-    xxs: 0.8rem,
-    xs: 1.2rem,
-    s: 1.6rem,
-    m: 2.4rem,
-    l: 3.2rem,
-    xl: 4.8rem,
-    xxl: 7.2rem,
-    xxxl: 9.6rem,
-    xxxxl: 12.0rem,
+  xxxs: 0.4rem,
+  xxs: 0.8rem,
+  xs: 1.2rem,
+  s: 1.6rem,
+  m: 2.4rem,
+  l: 3.2rem,
+  xl: 4.8rem,
+  xxl: 7.2rem,
+  xxxl: 9.6rem,
+  xxxxl: 12rem,
 );
 
 $textSizeMap: (
-    xxxs: 0.4rem,
-    xxs: 0.8rem,
-    xs: 1.2rem,
-    s: 1.6rem,
-    m: 2.4rem,
-    l: 3.2rem,
-    xl: 4.8rem,
-    xxl: 7.2rem,
-    xxxl: 9.6rem,
-    xxxxl: 12.0rem,
+  xxxs: 0.4rem,
+  xxs: 0.8rem,
+  xs: 1.2rem,
+  s: 1.6rem,
+  m: 2.4rem,
+  l: 3.2rem,
+  xl: 4.8rem,
+  xxl: 7.2rem,
+  xxxl: 9.6rem,
+  xxxxl: 12rem,
 );
 
 $textWeightsMap: (
@@ -39,9 +39,8 @@ $tokens: (
   textWeight: $textWeightsMap,
 );
 
-
 @function getSize($size) {
-  $spaceTokens: map-get($tokens, 'space');
+  $spaceTokens: map-get($tokens, "space");
   @return map-get($spaceTokens, $size);
 }
 

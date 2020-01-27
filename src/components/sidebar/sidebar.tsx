@@ -1,23 +1,24 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import Logo from '../logo/logo';
-import classBuilder from '../../utils/classBuilder';
-import { useAppState } from '../../context/appContext'
+import React from "react";
+import { Link } from "gatsby";
+import Logo from "../logo/logo";
+import classBuilder from "../../utils/classBuilder";
+import { useAppState } from "../../context/appContext";
 
-import * as styles from './sidebar.module.scss';
+import * as styles from "./sidebar.module.scss";
 
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require("uuid/v1");
 
 interface link {
-  url: string,
-  name: string,
+  url: string;
+  name: string;
 }
 
-const createLinks = (links: Array<link>) => links.map((item) => (
-  <li key={uuidv1()}>
-    <Link to={item.url}>{item.name}</Link>
-  </li>
-));
+const createLinks = (links: Array<link>) =>
+  links.map(item => (
+    <li key={uuidv1()}>
+      <Link to={item.url}>{item.name}</Link>
+    </li>
+  ));
 
 interface SidebarProps {
   linkStyle?: string;
@@ -29,13 +30,13 @@ interface SidebarProps {
 }
 
 const Sidebar = ({
-  boxStyle = '',
-  headingStyle = '',
-  sidebarStyle = '',
+  boxStyle = "",
+  headingStyle = "",
+  sidebarStyle = "",
   title,
   links,
 }: SidebarProps) => {
-  const {sidebar} = useAppState()
+  const { sidebar } = useAppState();
 
   return (
     <aside
@@ -48,11 +49,9 @@ const Sidebar = ({
         title={title}
         isLink={false}
       />
-      <ul>
-        {createLinks(links)}
-      </ul>
+      <ul>{createLinks(links)}</ul>
     </aside>
-)};
-
+  );
+};
 
 export default Sidebar;

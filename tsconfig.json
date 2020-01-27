@@ -1,8 +1,5 @@
 {
-  "include": [
-    "./src/**/*",
-    "setup-test-env.ts"
-  ],
+  "include": ["./src/**/*", "setup-test-env.ts"],
   "compilerOptions": {
     "jsx": "react",
     "target": "esnext",
@@ -17,6 +14,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": true
   }
 }

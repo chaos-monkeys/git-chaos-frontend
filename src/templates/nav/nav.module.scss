@@ -1,32 +1,31 @@
-@import './../../styles/global/tokens/tokens.scss';
+@import "./../../styles/global/tokens/tokens.scss";
 
-$spacer: 'm';
+$spacer: "m";
 
 %sticky {
-    position: sticky;
-    top: getSize($spacer);
+  position: sticky;
+  top: getSize($spacer);
 }
 
 .link {
-    @extend %sticky;
-    position: absolute;
-    left: getSize($spacer);
+  @extend %sticky;
+  position: absolute;
+  left: getSize($spacer);
 }
 
 nav {
-    @extend %sticky;
-    display: inline-block;
-    right: getSize($spacer);
-    width: min-content;
-    position: absolute;
-    z-index: 10000;
+  @extend %sticky;
+  display: inline-block;
+  right: getSize($spacer);
+  width: min-content;
+  position: absolute;
+  z-index: 10000;
 }
-
 
 // FIXME: is this a good way of doing this?
 // Rules in parent is separation of concerns, but feels weird
 .sidebar {
-    @media screen and (min-width: 768px) {
-        width: 50%;
-    }
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 }

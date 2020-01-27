@@ -1,13 +1,12 @@
 .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
 }
 
 .team {
-    background-color: var(--text-bg);
+  background-color: var(--text-bg);
 }
-
 
 // FIXME: figure out how tablet and desktop words
 // @media (min-width: 768px) {
