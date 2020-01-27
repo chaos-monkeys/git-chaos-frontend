@@ -11,6 +11,7 @@
     "gatsby-plugin-mdx": "^1.0.67",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-json": "^2.2.25",
     "preact": "^10.2.1",
     "react": "^16.12.0",
     "react-helmet": "^5.2.1",

@@ -1,40 +1,26 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
 const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
 
+// add slugs to MDX files (to dynamically build the pages)
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  // you only want to operate on `Mdx` nodes. If you had content from a
-  // remote CMS you could also check to see if the parent node was a
-  // `File` node here
+
   if (node.internal.type === "Mdx") {
     const basePath = `posts`;
 
-    const filePath = createFilePath({ node, getNode,  basePath  });
-    const value = `${basePath}${filePath}`
+    const filePath = createFilePath({ node, getNode, basePath });
+    const value = `${basePath}${filePath}`;
 
     createNodeField({
-      // Name of the field you are adding
       name: "slug",
-      // Individual MDX node
       node,
-      // Generated value based on filepath with "blog" prefix. you
-      // don't need a separating "/" before the value because
-      // createFilePath returns a path with the leading "/".
-      value
+      value,
     });
   }
 };
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  // Destructure the createPage function from the actions object
-  const { createPage } = actions;
-  const result = await graphql(`
+const getPages = async graphql =>
+  graphql(`
     query {
       allMdx {
         edges {
@@ -46,23 +32,54 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allReposJson {
+        edges {
+          node {
+            id
+            meta {
+              repo_name
+              repo_owner
+              start_time
+              issue_number
+              issue_number_title
+            }
+          }
+        }
+      }
     }
   `);
+
+// create MDX pages dynamically from the onCreateNode slugs
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+  const result = await getPages(graphql);
+
   if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+    reporter.panicOnBuild('🚨 ERROR: Loading "createPages" query');
   }
-  // Create blog post pages.
+
   const posts = result.data.allMdx.edges;
-  // you'll call `createPage` for each result
   posts.forEach(({ node }) => {
     createPage({
-      // This is the slug you created before
-      // (or `node.frontmatter.slug`)
       path: node.fields.slug,
-      // This component will wrap our MDX content
       component: path.resolve("./src/templates/post/post.tsx"),
-      // You can use the values in this context in
-      // our page layout component
+      context: { id: node.id },
+    });
+  });
+
+
+
+  const issues = result.data.allReposJson.edges;
+  issues.forEach(({ node }) => {
+    createPage({
+      // example path: /git-chaos/chaos-monkeys/git-chaos/17
+      path: [
+        "git-chaos",
+        node.meta.repo_owner,
+        node.meta.repo_name,
+        node.meta.issue_number,
+      ].join("/"),
+      component: path.resolve("./src/templates/repos/repos.tsx"),
       context: { id: node.id },
     });
   });
