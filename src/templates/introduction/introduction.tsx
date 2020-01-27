@@ -1,10 +1,9 @@
 // FIXME: make this into a separate copmponnet?
-import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import * as Image from 'gatsby-image';
-import Tile from '../../components/tile/tile';
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import Tile from "../../components/tile/tile";
 
-import * as styles from './introduction.module.scss';
+import * as styles from "./introduction.module.scss";
 
 const BIG_NUM = 40; // FIXME: make dynamic
 
@@ -16,7 +15,7 @@ const Introduction = () => {
           background
         }
       }
-      mdx(frontmatter: {title: {eq: "Attempting to predict chaos"}}) {
+      mdx(frontmatter: { title: { eq: "Attempting to predict chaos" } }) {
         id
         frontmatter {
           title
@@ -30,7 +29,7 @@ const Introduction = () => {
   `);
 
   const { background } = data.site.siteMetadata;
-  const { title, author } = data.mdx.frontmatter
+  const { title, author } = data.mdx.frontmatter;
   const { slug } = data.mdx.fields;
 
   const backgroundText = `${background}\n`.repeat(BIG_NUM); // FIXME: gross!
