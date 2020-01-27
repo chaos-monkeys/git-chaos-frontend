@@ -48,9 +48,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `);
+
   if (result.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
+
   // Create blog post pages.
   const posts = result.data.allMdx.edges;
   // you'll call `createPage` for each result
@@ -61,6 +63,55 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: node.fields.slug,
       // This component will wrap our MDX content
       component: path.resolve("./src/templates/post/post.tsx"),
+      // You can use the values in this context in
+      // our page layout component
+      context: { id: node.id },
+    });
+  });
+};
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  // Destructure the createPage function from the actions object
+  const { createPage } = actions;
+  const result = await graphql(`
+  query {
+    allReposJson {
+      edges {
+        node {
+          id
+          meta {
+            repo_name
+            repo_owner
+            start_time
+            commit_sha
+            issue_number
+            issue_number_title
+          }
+        }
+      }
+    }
+  }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+  }
+
+  // Create blog post pages.
+  const posts = result.data.allReposJson.edges;
+
+  const prefix = "git-chaos";
+
+  // you'll call `createPage` for each result
+  posts.forEach(({ node }) => {
+    const slug = [prefix, node.meta.repo_owner, node.meta.repo_name, node.meta.issue_number].join('/')
+
+    createPage({
+      // This is the slug you created before
+      // (or `node.frontmatter.slug`)
+      path: slug,
+      // This component will wrap our MDX content
+      component: path.resolve("./src/templates/repos/repos.tsx"),
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
