@@ -5,16 +5,9 @@ import Tile from "../../components/tile/tile";
 
 import * as styles from "./introduction.module.scss";
 
-const BIG_NUM = 40; // FIXME: make dynamic
-
 const Introduction = () => {
   const data = useStaticQuery(graphql`
     query {
-      site {
-        siteMetadata {
-          background
-        }
-      }
       mdx(frontmatter: { title: { eq: "Predicting chaos" } }) {
         id
         frontmatter {
@@ -28,16 +21,13 @@ const Introduction = () => {
     }
   `);
 
-  const { background } = data.site.siteMetadata;
   const { title, author } = data.mdx.frontmatter;
   const { slug } = data.mdx.fields;
-
-  const backgroundText = `${background}\n`.repeat(BIG_NUM); // FIXME: gross!
 
   return (
     // TOOD: add text ally stuff and arias
     <Link to={`/${slug}`} className={styles.tileLink}>
-      <Tile className={styles.tile} text={backgroundText} />
+      <Tile className={styles.tile} />
       <h1 className={styles.title}>{title}</h1>
       <h3 className={styles.author}>{`By ${author}`}</h3>
     </Link>

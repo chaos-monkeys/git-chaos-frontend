@@ -30,8 +30,7 @@ const Hamburger = ({ isAnimating }: { isAnimating: boolean }) => {
           isAnimating,
           isOpen: sidebar.open,
           dispatch,
-        })
-      }
+        })}
     >
       {hamburgerIcon(sidebar.open)}
     </button>

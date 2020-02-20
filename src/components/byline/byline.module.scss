@@ -2,7 +2,7 @@
 @import "../../styles/global/typography.scss";
 
 .byline {
-    @include margin-top('xl');
-    @include mono();
-    @include font('s');
+  @include margin-top("xl");
+  @include mono();
+  @include font("s");
 }
