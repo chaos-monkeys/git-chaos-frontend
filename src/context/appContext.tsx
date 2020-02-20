@@ -56,7 +56,7 @@ function AppProvider({ children }: AppProviderProps) {
 function useAppState() {
   const context = useContext(AppStateContext)
   if (context === undefined) {
-    throw new Error('useCountState must be used within a CountProvider')
+    throw new Error('useCountState must be used within a AppProvider')
   }
   return context
 }
@@ -64,7 +64,7 @@ function useAppState() {
 function useAppDispatch() {
   const context = useContext(AppDispatchContext)
   if (context === undefined) {
-    throw new Error('useCountDispatch must be used within a CountProvider')
+    throw new Error('useCountDispatch must be used within a AppProvider')
   }
   return context
 }
