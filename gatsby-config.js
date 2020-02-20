@@ -6,9 +6,12 @@ module.exports = {
     title: "Chaos Monkeys",
     description: "Helping you build better",
     author: "Chaos Monkeys",
-    background: "Make chaos",
 
     sidebar: [
+      {
+        name: "Predicting chaos",
+        url: "/posts/predicting-chaos",
+      },
       {
         name: "Posts",
         url: "/posts",
