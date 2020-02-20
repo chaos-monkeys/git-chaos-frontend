@@ -78,7 +78,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "npm run test:stylelint && npm run test:type-check && npm run test:jest",
-    "test:jest": "jest ./src --passWithNoTests",
+    "test:jest": "jest --passWithNoTests ./src",
     "test:type-check": "tsc --noEmit",
     "test:stylelint": "stylelint \"src/**/*.scss\" --syntax scss"
   },
