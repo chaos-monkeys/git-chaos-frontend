@@ -1,0 +1,8 @@
+@import "../../styles/global/tokens/tokens.scss";
+@import "../../styles/global/typography.scss";
+
+.byline {
+    @include margin-top('xl');
+    @include mono();
+    @include font('s');
+}

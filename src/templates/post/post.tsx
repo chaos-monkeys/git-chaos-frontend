@@ -1,7 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import * as Image from 'gatsby-image';
+import * as styles from "./post.module.scss";
+import Nav from "../nav/nav";
+import { AppProvider } from "../../context/appContext"
+
 
 interface PageTemplateProps {
   data: {
@@ -9,23 +12,30 @@ interface PageTemplateProps {
       body: string,
       frontmatter: {
         title: string,
-        featuredImage: {
-          childImageSharp: {
-            fluid: Image.FluidObject,
-          }
-        }
+        renderTitle: boolean,
+        author: Array<string>,
       }
     }
   }
 }
 
-const PageTemplate = ({ data }: PageTemplateProps) => (
-  <div>
-    <Image.default fluid={data.mdx.frontmatter.featuredImage.childImageSharp.fluid} />
-    <h1>{data.mdx.frontmatter.title}</h1>
-    <MDXRenderer>{data.mdx.body}</MDXRenderer>
-  </div>
-);
+const PageTemplate = ({ data }: PageTemplateProps) => {
+  const frontmatter = data?.mdx?.frontmatter;
+  const renderTitle = frontmatter?.renderTitle && frontmatter?.title;
+
+  return (
+    <>
+      <AppProvider>
+        <Nav />
+        <article className={styles.post}>
+          { renderTitle && <h1 className={styles.post_title}>{frontmatter.title}</h1> }
+          <div className={styles.post_content}>
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          </div>
+        </article>
+      </AppProvider>
+    </>
+)};
 
 
 export const pageQuery = graphql`
@@ -35,13 +45,8 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
-        featuredImage {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        renderTitle
+        author
       }
     }
   }`;

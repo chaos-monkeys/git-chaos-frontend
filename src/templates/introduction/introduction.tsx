@@ -15,7 +15,7 @@ const Introduction = () => {
           background
         }
       }
-      mdx(frontmatter: { title: { eq: "Attempting to predict chaos" } }) {
+      mdx(frontmatter: { title: { eq: "Predicting chaos" } }) {
         id
         frontmatter {
           title

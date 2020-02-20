@@ -1,0 +1,53 @@
+@import "../../styles/global/tokens/tokens.scss";
+@import "../../styles/global/typography.scss";
+
+.post {
+    @include margin('s');
+    margin-top: 10rem;
+    display: grid;
+    grid-template-areas: "title content";
+    grid-template-columns: min-content 1fr;
+}
+
+.post_title {
+    @include sans-serif();
+    @include font('xl');
+    @include font-weight('x-bold');
+    grid-area: title;
+    writing-mode: vertical-rl;
+    transform: rotate(0.5turn);
+    text-align: end; // force it to the 'top' of the line
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: -0.15rem;
+}
+
+.post_content {
+    @include serif();
+    @include font('m');
+    grid-area: content;
+    padding: 0;
+    margin: 0;
+
+    p+p {
+        margin-top: 2rem;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .post {
+        @include margin('xl');
+        grid-template-areas: "title content .";
+        grid-template-columns: 25% 1fr 25%;
+    }
+
+    .post_title {
+        @include font('xxxxl');
+        transform: rotate(0.5turn);
+        text-align: end; // force it to the 'top' of the line
+        max-height: 90vh; // stops any offscreen weirdness and forces the linebreak _somewhere_
+        letter-spacing: -0.4rem;
+        line-height: 9.3rem;
+    }
+}
