@@ -7,6 +7,10 @@ module.exports = {
     description: "Helping you build better",
     author: "Chaos Monkeys",
 
+    emails: {
+      feedback: "feedback@chaosmonkeys.dev"
+    },
+
     sidebar: [
       {
         name: "Predicting chaos",
