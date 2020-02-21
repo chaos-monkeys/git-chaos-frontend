@@ -1,22 +1,24 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
+import React from "react";
+import { Link, graphql } from "gatsby";
 
 interface PostsIndex {
   data: {
     allMdx: {
-      edges: [{
-        node: {
-          id: string,
-          fields: {
-            slug: string
-          },
-          frontmatter: {
-            title: string
-          }
-        }
-      }]
-    }
-  }
+      edges: [
+        {
+          node: {
+            id: string;
+            fields: {
+              slug: string;
+            };
+            frontmatter: {
+              title: string;
+            };
+          };
+        },
+      ];
+    };
+  };
 }
 
 const PostsIndex = ({ data }: PostsIndex) => {

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import * as styles from './logo.module.scss';
-import upperCaseAndBreak from '../../utils/textFormatter';
-import classBuilder from '../../utils/classBuilder';
+import React from "react";
+import { Link } from "gatsby";
+import * as styles from "./logo.module.scss";
+import upperCaseAndBreak from "../../utils/textFormatter";
+import classBuilder from "../../utils/classBuilder";
 
 interface BuildLogoProps {
   boxStyle: string;
@@ -26,9 +26,9 @@ interface LogoProps {
 }
 
 const Logo = ({
-  linkStyle = '',
-  headingStyle = '',
-  boxStyle = '',
+  linkStyle = "",
+  headingStyle = "",
+  boxStyle = "",
   title,
   isLink = false,
 }: LogoProps) => {

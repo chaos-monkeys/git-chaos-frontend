@@ -1,36 +1,35 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
+import React from "react";
+import { Link, graphql } from "gatsby";
 
- interface Meta {
-  "repo_name": string;
-  "repo_owner": string;
-  "start_time": number;
-  "commit_sha": string;
-  "issue_number": string;
-  "issue_number_title": string;
+interface Meta {
+  repo_name: string;
+  repo_owner: string;
+  start_time: number;
+  commit_sha: string;
+  issue_number: string;
+  issue_number_title: string;
 }
 
- interface Node {
-  "id": string;
-  "meta": Meta;
+interface Node {
+  id: string;
+  meta: Meta;
 }
 
- interface Edge {
-  "node": Node;
+interface Edge {
+  node: Node;
 }
 
- interface AllReposJson {
-  "edges": Edge[];
+interface AllReposJson {
+  edges: Edge[];
 }
 
- interface Data {
-  "allReposJson": AllReposJson;
+interface Data {
+  allReposJson: AllReposJson;
 }
 
- interface RootObject {
-  "data": Data;
+interface RootObject {
+  data: Data;
 }
-
 
 const buildRepo = (node: Node) => {
   const {
@@ -40,11 +39,7 @@ const buildRepo = (node: Node) => {
     issue_number_title: issueNumberTitle,
   } = node.meta;
 
-  const slug = ["git-chaos",
-    repoOwner,
-    repoName,
-    issueNumber
-  ].join("/");
+  const slug = ["git-chaos", repoOwner, repoName, issueNumber].join("/");
 
   return (
     <li key={node.id}>
@@ -54,27 +49,26 @@ const buildRepo = (node: Node) => {
         {issueNumberTitle}
       </Link>
     </li>
-  )
-}
+  );
+};
 
-const buildRepoList = (edges: Edge[]) => edges.map(({ node } : Edge) => buildRepo(node))
+const buildRepoList = (edges: Edge[]) =>
+  edges.map(({ node }: Edge) => buildRepo(node));
 
 const ReposIndex = ({ data }: RootObject) => {
-  const { edges } = data.allReposJson
-  const repoList = buildRepoList(edges)
+  const { edges } = data.allReposJson;
+  const repoList = buildRepoList(edges);
 
   return (
     <div>
-      <ul>
-        {repoList}
-      </ul>
+      <ul>{repoList}</ul>
     </div>
   );
 };
 
 export const pageQuery = graphql`
-query {
-  allReposJson{
+  query {
+    allReposJson {
       edges {
         node {
           id

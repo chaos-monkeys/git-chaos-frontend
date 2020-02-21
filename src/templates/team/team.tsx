@@ -4,21 +4,17 @@ import { useStaticQuery, graphql } from "gatsby";
 import Member from "../../components/member/member";
 
 import * as styles from "./team.module.scss";
-import classBuilder from '../../utils/classBuilder'
+import classBuilder from "../../utils/classBuilder";
 
 const pullQuote = (
   <>
-    Built with
-    {" "}
+    Built with{" "}
     <span role="img" aria-label="love">
       ❤️
-    </span>
-    {" "}
+    </span>{" "}
     by
   </>
 );
-
-
 
 const Team = ({ className }: { className: string }) => {
   const data = useStaticQuery(graphql`

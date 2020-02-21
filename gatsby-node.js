@@ -67,8 +67,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-
-
   const issues = result.data.allReposJson.edges;
   issues.forEach(({ node }) => {
 

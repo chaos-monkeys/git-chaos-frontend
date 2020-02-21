@@ -1,12 +1,12 @@
-import React from 'react';
-import { useAppState, useAppDispatch } from '../../context/appContext'
-import toggleSidebar from '../../utils/toggleSidebar'
+import React from "react";
+import { useAppState, useAppDispatch } from "../../context/appContext";
+import toggleSidebar from "../../utils/toggleSidebar";
 
-import * as styles from './overlay.module.scss';
+import * as styles from "./overlay.module.scss";
 
 const Overlay = () => {
   const dispatch = useAppDispatch();
-  const { sidebar } = useAppState()
+  const { sidebar } = useAppState();
 
   return (
     // the close action only needs to fire when the user clicks off the sidebar
@@ -15,13 +15,15 @@ const Overlay = () => {
     <div
       className={styles.overlay}
       data-open={sidebar.open}
-      onClick={() => toggleSidebar({
-        isAnimating: false,
-        isOpen: sidebar.open,
-        dispatch
-      })}
+      onClick={() =>
+        toggleSidebar({
+          isAnimating: false,
+          isOpen: sidebar.open,
+          dispatch,
+        })
+      }
     />
-  )
-}
+  );
+};
 
 export default Overlay;
