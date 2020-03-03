@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-const path = require("path");
-
 module.exports = {
   siteMetadata: {
     title: "Chaos Monkeys",
@@ -8,7 +5,7 @@ module.exports = {
     author: "Chaos Monkeys",
 
     emails: {
-      feedback: "feedback@chaosmonkeys.dev"
+      feedback: "feedback@chaosmonkeys.dev",
     },
 
     sidebar: [
@@ -79,7 +76,13 @@ module.exports = {
         ],
       },
     },
-    "gatsby-plugin-typescript",
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
     "gatsby-plugin-scss-typescript",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

@@ -1,69 +1,68 @@
-@import './../../styles/global/tokens/tokens.scss';
-@import './../../styles/global/typography.scss';
+@import "./../../styles/global/tokens/tokens.scss";
+@import "./../../styles/global/typography.scss";
 
 // FIXME: figure out how tablet and desktop words
 
 .left,
 .right {
-    @include margin-bottom('l');
-    display: grid;
+  @include margin-bottom("l");
+  display: grid;
 }
 
 .title,
 .name {
-    display: grid;
-    color: var(--primary);
-    writing-mode: vertical-rl;
+  display: grid;
+  color: var(--primary);
+  writing-mode: vertical-rl;
 }
 
 .image {
-    display: grid;
-    grid-area: image;
+  display: grid;
+  grid-area: image;
 }
 
 .title {
-    @include mono();
-    @include font('xs');
-    grid-area: title;
+  @include mono();
+  @include font("xs");
+  grid-area: title;
 }
 
 .name {
-    @include sans-serif();
-    @include font('l');
-    @include font-weight('x-bold');
-    grid-area: name;
-    text-transform: uppercase;
-    line-height: 2.8rem;
-    letter-spacing: -0.01rem;
+  @include sans-serif();
+  @include font("l");
+  @include font-weight("x-bold");
+  grid-area: name;
+  text-transform: uppercase;
+  line-height: 2.8rem;
+  letter-spacing: -0.01rem;
 }
 
 .description {
-    @include font('s');
-    @include serif;
-    display: grid;
-    grid-area: description;
-    color: var(--main-bg);
+  @include font("s");
+  @include serif;
+  display: grid;
+  grid-area: description;
+  color: var(--main-bg);
 }
 
 .left {
-    grid-template-columns: 4fr min-content min-content 1fr;
-    grid-template-rows: minmax(10rem, calc(var(--vh, 1vh) * 25)) min-content;
-    grid-template-areas:
-        "image          title   name    ."
-        "description    title   name    .";
+  grid-template-columns: 4fr min-content min-content 1fr;
+  grid-template-rows: minmax(10rem, calc(var(--vh, 1vh) * 25)) min-content;
+  grid-template-areas:
+    "image          title   name    ."
+    "description    title   name    .";
 }
 
 .right {
-    grid-template-columns: 1fr min-content min-content 4fr;
-    grid-template-rows: minmax(10rem, calc(var(--vh, 1vh) * 25)) min-content;
-    grid-template-areas:
-        ".  name    title   image"
-        ".  name    title   description";
+  grid-template-columns: 1fr min-content min-content 4fr;
+  grid-template-rows: minmax(10rem, calc(var(--vh, 1vh) * 25)) min-content;
+  grid-template-areas:
+    ".  name    title   image"
+    ".  name    title   description";
 
-
-    .title,
-    .name {
-        transform: rotate(0.5turn);
-        text-align: end;
-    }
+  .title,
+  .name {
+    transform: rotate(0.5turn);
+    text-align: end;
+  }
 }

@@ -19,7 +19,17 @@ module.exports = {
   },
   testURL: "http://localhost",
   setupFiles: ["<rootDir>/loadershim.js"],
-  setupFilesAfterEnv: ["<rootDir>/setup-test-env.js"],
+  setupFilesAfterEnv: ["<rootDir>/utils/setup-test-env.tsx"],
   resetMocks: true, // https://jestjs.io/docs/en/configuration#resetmocks-boolean
   resetModules: true, // https://jestjs.io/docs/en/configuration#resetmodules-boolean
+
+  collectCoverage: true,
+  collectCoverageFrom: ["src/*.{js,ts,jsx,tsx}"],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+    },
+  },
 };

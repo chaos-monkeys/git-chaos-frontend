@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Byline matches snapshot 1`] = `
+<div
+  data-testid="byline"
+>
+  <p>
+    Chaos Monkeys is a built with
+     
+    <span
+      aria-label="love"
+      role="img"
+    >
+      ❤️
+    </span>
+     
+    by Ollie & Rob.
+  </p>
+  <p>
+    We’re building kickass tools to help you deliver better. We want you to love what we build as much as we do -
+     
+    <a
+      data-testid="byline-link"
+      href="mailto:feedback@chaosmonkeys.dev"
+    >
+      let us know how we are doing
+    </a>
+  </p>
+</div>
+`;

@@ -1,36 +1,36 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    jest: true
-  },
-  extends: [
-    "plugin:react/recommended",
-    "airbnb",
-    "prettier",
-    "prettier/@typescript-eslint",
-  ],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-  },
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2018,
-    sourceType: "module",
+    jsx: true,
+    useJSXTextNode: true
   },
-  plugins: ["react", "@typescript-eslint", "react-hooks"],
+  env: {
+    browser: true,
+    jest: true
+  },
+  plugins: ["@typescript-eslint", "react-hooks", "jest", "prettier"],
+  extends: [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
   rules: {
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
-      1,
-      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
+      "warn",
+      {
+        extensions: [".jsx", ".tsx"]
+      }
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: ["**/setup-test-env.tsx", "**/*.test.*"]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -38,15 +38,19 @@ module.exports = {
         js: "never",
         jsx: "never",
         ts: "never",
-        tsx: "never",
-      },
+        tsx: "never"
+      }
     ],
-  },
-  settings: {
-    "import/resolver": {
-      node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-      },
-    },
-  },
+    "@typescript-eslint/camelcase": ["error", { properties: "never" }],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "lf",
+        semi: true,
+        singleQuote: false,
+        tabWidth: 2,
+        trailingComma: "all"
+      }
+    ]
+  }
 };

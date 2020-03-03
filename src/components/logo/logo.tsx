@@ -38,7 +38,6 @@ const Logo = ({
     case isLink:
       return (
         <Link
-          // className={classBuilder(styles.link, linkStyle)}
           className={classBuilder(linkStyle, styles.link)}
           to="/"
         >

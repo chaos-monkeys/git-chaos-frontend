@@ -1,8 +1,5 @@
 {
-  "include": [
-    "./src/**/*",
-    "setup-test-env.ts"
-  ],
+  "include": ["./src/**/*", "./utils/*", "setup-test-env.tsx"],
   "compilerOptions": {
     "jsx": "react",
     "target": "esnext",

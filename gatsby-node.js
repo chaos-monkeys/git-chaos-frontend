@@ -67,21 +67,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-
-
   const issues = result.data.allReposJson.edges;
   issues.forEach(({ node }) => {
-
     createPage({
       // example path: /git-chaos/chaos-monkeys
-      path: [ "git-chaos", node.meta.repo_owner].join("/"),
+      path: ["git-chaos", node.meta.repo_owner].join("/"),
       component: path.resolve("./src/templates/git-chaos/repo_owner.tsx"),
       context: { id: node.id },
     });
 
     createPage({
       // example path: /git-chaos/chaos-monkeys/git-chaos/
-      path: [ "git-chaos", node.meta.repo_owner, node.meta.repo_name].join("/"),
+      path: ["git-chaos", node.meta.repo_owner, node.meta.repo_name].join("/"),
       component: path.resolve("./src/templates/git-chaos/repo_name.tsx"),
       context: { id: node.id },
     });
